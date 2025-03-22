@@ -21,6 +21,25 @@
   <link rel="icon" type="image/png" href="favicon.png">
   
   <style>
+    /* Improved text contrast in hero section */
+    .hero-title {
+      color: #FFFFFF; /* Bright white for main heading */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Shadow for better legibility */
+      font-weight: 700;
+    }
+    
+    .hero-text {
+      color: #FFFFFF; /* White for hero text */
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      font-size: 1.8rem;
+    }
+    
+    /* Make strong elements stand out */
+    .hero-content strong {
+      color: #69BE28; /* Action Green for emphasis */
+      font-weight: 700;
+    }
+    
     /* Lightbox styles */
     .image-modal {
       display: none;
@@ -257,7 +276,7 @@
     </div>
   </footer>
 
-  <!-- Animation Script - Data network visualization -->
+  <!-- Animation Script - Static Colors with Constant Motion -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const canvas = document.getElementById('hero-canvas');
@@ -267,65 +286,121 @@
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = canvas.parentElement.offsetHeight;
+        
+        // Redraw background on resize
+        drawBackground();
       }
       
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
+      // Draw static background once
+      function drawBackground() {
+        // Gradient background
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.9)'); // Darker Seahawks blue
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');   // Darker background for better text contrast
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       
-      // Node class for data visualization
-      class Node {
+      // Mouse interaction
+      let mouse = {
+        x: undefined,
+        y: undefined,
+        radius: 100  // Interaction radius
+      };
+      
+      // Track mouse position
+      window.addEventListener('mousemove', function(event) {
+        mouse.x = event.x;
+        mouse.y = event.y;
+      });
+      
+      // Remove mouse position when inactive
+      window.addEventListener('mouseout', function() {
+        mouse.x = undefined;
+        mouse.y = undefined;
+      });
+      
+      // Fixed Seahawks colors array
+      const colors = [
+        '#002244', // Seahawks Blue
+        '#69BE28', // Action Green
+        '#A5ACAF', // Wolf Grey
+        '#FFFFFF'  // White
+      ];
+      
+      // Particles array
+      let particles = [];
+      
+      // Particle class with fixed color
+      class Particle {
         constructor() {
-          this.reset();
-        }
-        
-        reset() {
           // Position
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height;
           
-          // Size
+          // Size - same range as original
           this.size = Math.random() * 4 + 1;
           
-          // Speed
-          this.speedX = Math.random() * 1 - 0.5;
-          this.speedY = Math.random() * 1 - 0.5;
+          // Speed for constant motion
+          this.speedX = (Math.random() * 0.8 - 0.4);
+          // Ensure minimum speed
+          if (Math.abs(this.speedX) < 0.2) {
+            this.speedX = 0.2 * (Math.random() > 0.5 ? 1 : -1);
+          }
           
-          // Color - Seahawks colors
-          this.color = this.getColor();
+          this.speedY = (Math.random() * 0.8 - 0.4);
+          // Ensure minimum speed
+          if (Math.abs(this.speedY) < 0.2) {
+            this.speedY = 0.2 * (Math.random() > 0.5 ? 1 : -1);
+          }
           
-          // Opacity
-          this.alpha = Math.random() * 0.5 + 0.1;
+          // IMPORTANT: Fixed color index that never changes
+          this.colorIndex = Math.floor(Math.random() * colors.length);
+          
+          // IMPORTANT: Fixed opacity that never changes
+          this.alpha = Math.random() * 0.3 + 0.2;
           
           // Connection radius
           this.connectionRadius = 150;
         }
         
+        // Get color from fixed index
         getColor() {
-          // Seahawks colors
-          const colors = [
-            '#002244', // Seahawks Blue
-            '#69BE28', // Action Green
-            '#A5ACAF', // Wolf Grey
-            '#FFFFFF'  // White
-          ];
-          
-          return colors[Math.floor(Math.random() * colors.length)];
+          return colors[this.colorIndex];
         }
         
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
+          ctx.fillStyle = this.getColor();
           ctx.globalAlpha = this.alpha;
           ctx.fill();
+          ctx.globalAlpha = 1; // Reset global alpha
         }
         
         update() {
-          // Movement
+          // Mouse interaction
+          if (mouse.x !== undefined && mouse.y !== undefined) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < mouse.radius) {
+              // Move away from mouse
+              const force = (mouse.radius - distance) / mouse.radius;
+              const directionX = dx / distance || 0;
+              const directionY = dy / distance || 0;
+              
+              this.x -= directionX * force * 2;
+              this.y -= directionY * force * 2;
+            }
+          }
+          
+          // Regular movement
           this.x += this.speedX;
           this.y += this.speedY;
           
-          // Boundary check
+          // Boundary check with bounce
           if (this.x < 0 || this.x > canvas.width) {
             this.speedX = -this.speedX;
           }
@@ -336,30 +411,35 @@
         }
       }
       
-      // Create nodes array
-      const nodes = [];
-      const nodeCount = Math.min(80, Math.floor(window.innerWidth / 10));
-      
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node());
+      // Initialize particles
+      function initializeParticles() {
+        particles = [];
+        const particlesCount = Math.min(80, Math.floor(window.innerWidth / 10));
+        
+        for (let i = 0; i < particlesCount; i++) {
+          particles.push(new Particle());
+        }
       }
       
-      // Draw connections between nodes (data network effect)
-      function drawConnections() {
-        for (let i = 0; i < nodes.length; i++) {
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dx = nodes[i].x - nodes[j].x;
-            const dy = nodes[i].y - nodes[j].y;
+      // Connect particles with lines
+      function connectParticles() {
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
             
-            if (distance < nodes[i].connectionRadius) {
-              ctx.beginPath();
-              ctx.strokeStyle = nodes[i].color;
+            if (distance < particles[i].connectionRadius) {
+              // Use fixed color for connections
+              ctx.strokeStyle = particles[i].getColor();
               ctx.globalAlpha = 0.05;
               ctx.lineWidth = 0.5;
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
+              
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
               ctx.stroke();
+              ctx.globalAlpha = 1; // Reset global alpha
             }
           }
         }
@@ -367,37 +447,43 @@
       
       // Animation loop
       function animate() {
+        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Gradient background with Seahawks colors
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.8)'); // Seahawks blue
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.8)');   // Dark background
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Redraw background
+        drawBackground();
         
-        // Draw and update nodes
-        drawConnections();
-        
-        nodes.forEach(node => {
-          node.draw();
-          node.update();
+        // Update and draw particles
+        particles.forEach(particle => {
+          particle.update();
         });
         
-        // Occasionally add new nodes
-        if (Math.random() < 0.02 && nodes.length < nodeCount + 10) {
-          const node = new Node();
-          nodes.push(node);
+        // Draw connections
+        connectParticles();
+        
+        // Draw particles
+        particles.forEach(particle => {
+          particle.draw();
+        });
+        
+        // Occasionally add new particles with fixed properties
+        if (Math.random() < 0.005 && particles.length < 100) {
+          particles.push(new Particle());
           
-          // Remove a node once we exceed our limit
-          if (nodes.length > nodeCount + 10) {
-            nodes.shift();
+          // Remove oldest particle if exceeding limit
+          if (particles.length > 100) {
+            particles.shift();
           }
         }
         
+        // Continue animation
         requestAnimationFrame(animate);
       }
       
+      // Initialize canvas and start animation
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      initializeParticles();
       animate();
       
       // Mobile menu toggle
