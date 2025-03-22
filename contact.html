@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | James Bressani</title>
+  <meta name="description" content="Get in touch with James Bressani - Data Analyst and System Administrator">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <style>
+    /* Additional styles for this page */
+    .contact-methods {
+      display: flex;
+      justify-content: space-around;
+      gap: 6rem;
+      margin: 5rem 0;
+    }
+    
+    .contact-method {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 200px;
+    }
+    
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-label {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-value {
+      font-size: 1.6rem;
+      color: var(--color-primary);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      background: var(--color-light);
+      color: var(--color-primary);
+      font-size: 2.4rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .social-link:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .contact-heading {
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--color-dark);
+    }
+    
+    .contact-text {
+      text-align: center;
+      max-width: 70rem;
+      margin: 0 auto 4rem;
+      font-size: 1.8rem;
+      line-height: 1.6;
+    }
+    
+    .contact-card {
+      padding: 6rem 4rem;
+      margin-bottom: 6rem;
+    }
+    
+    /* Footer spacing fix */
+    .footer-content {
+      padding-bottom: 3rem;
+    }
+    
+    .footer-links {
+      margin-bottom: 3rem;
+    }
+    
+    .hero-content p {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 70rem;
+    }
+    
+    /* Footer social links - white color */
+    .footer .social-link {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+    }
+    
+    .footer .social-link:hover {
+      background: var(--color-white);
+      color: var(--color-primary);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-methods {
+        flex-direction: column;
+        gap: 4rem;
+      }
+      
+      .contact-method {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-text">James Bressani</span>
+      </div>
+      
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="hero" style="height: 40vh; min-height: 300px;">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    
+    <div class="container">
+      <div class="hero-content" style="text-align: center; margin: 0 auto;">
+        <h1 class="hero-title">Get In Touch</h1>
+        <p class="hero-text">
+          Have a question or want to work together? Feel free to reach out!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-card">
+        <h2 class="contact-heading">Contact Information</h2>
+        <p class="contact-text">
+          I'm always open to discussing <strong>new projects</strong>, <strong>data analysis opportunities</strong>, or just <strong>exchanging ideas</strong> about technology.
+          Feel free to reach out using any of the methods below.
+        </p>
+        
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <span class="contact-label">Email</span>
+            <span class="contact-value" id="email-display">Click to reveal email</span>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Tampa, Florida</span>
+          </div>
+        </div>
+        
+        <h3 style="text-align: center; margin-top: 5rem; font-size: 2.4rem;">Connect With Me</h3>
+        
+        <div class="social-links">
+          <a href="https://github.com/James-Bressani" class="social-link" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jamesbressani/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <h3 class="footer-logo">James Bressani</h3>
+      <p class="footer-text">Passionate about turning data into actionable insights</p>
+      
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="projects.html" class="footer-link">Projects</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://github.com/James-Bressani" class="social-link" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/jamesbressani/" class="social-link" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Animation Script - Fixed data network visualization without flashing -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Email protection
+      const emailDisplay = document.getElementById('email-display');
+      if (emailDisplay) {
+        // Split the email components to avoid crawlers
+        const emailName = 'bressanijames';
+        const emailDomain = 'gmail.com';
+        
+        emailDisplay.addEventListener('click', function() {
+          const fullEmail = emailName + '@' + emailDomain;
+          emailDisplay.innerHTML = `<a href="mailto:${fullEmail}">${fullEmail}</a>`;
+        });
+      }
+      
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Node class for data visualization
+      class Node {
+        constructor() {
+          this.reset();
+        }
+        
+        reset() {
+          // Position
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          
+          // Size
+          this.size = Math.random() * 4 + 1;
+          
+          // Speed
+          this.speedX = Math.random() * 0.7 - 0.35; // Reduced speed
+          this.speedY = Math.random() * 0.7 - 0.35; // Reduced speed
+          
+          // Fixed colors to prevent flashing - using consistent Seahawks colors
+          this.color = this.getFixedColor();
+          
+          // Opacity - more consistent
+          this.alpha = 0.3 + Math.random() * 0.2;
+          
+          // Connection radius
+          this.connectionRadius = 150;
+        }
+        
+        getFixedColor() {
+          // Only using the primary Seahawks colors to prevent jarring color changes
+          const colors = [
+            '#002244', // Seahawks Blue - primary color
+            '#69BE28', // Action Green - secondary accent
+            '#002244', // Repeat blue to make it more common
+            '#A5ACAF'  // Wolf Grey - subtle accent
+          ];
+          
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.globalAlpha = this.alpha;
+          ctx.fill();
+        }
+        
+        update() {
+          // Movement - smoother, less erratic
+          this.x += this.speedX;
+          this.y += this.speedY;
+          
+          // Boundary check
+          if (this.x < 0 || this.x > canvas.width) {
+            this.speedX = -this.speedX;
+          }
+          
+          if (this.y < 0 || this.y > canvas.height) {
+            this.speedY = -this.speedY;
+          }
+        }
+      }
+      
+      // Create nodes array
+      const nodes = [];
+      const nodeCount = Math.min(80, Math.floor(window.innerWidth / 10));
+      
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push(new Node());
+      }
+      
+      // Draw connections between nodes (data network effect)
+      function drawConnections() {
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < nodes[i].connectionRadius) {
+              ctx.beginPath();
+              // Use a consistent color for connections
+              ctx.strokeStyle = nodes[i].color;
+              ctx.globalAlpha = 0.03; // More subtle connections
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Solid gradient background - more consistent
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.9)'); // Darker Seahawks blue
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');   // Dark background
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw and update nodes
+        drawConnections();
+        
+        nodes.forEach(node => {
+          node.draw();
+          node.update();
+        });
+        
+        // Less frequent node updates to reduce flickering
+        if (Math.random() < 0.005 && nodes.length < nodeCount + 5) {
+          const node = new Node();
+          nodes.push(node);
+          
+          // Remove a node once we exceed our limit
+          if (nodes.length > nodeCount + 5) {
+            nodes.shift();
+          }
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        this.classList.toggle('active');
+        
+        if (this.classList.contains('active')) {
+          this.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          this.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+      
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Add animation class to elements as they come into view
+      const animateElements = document.querySelectorAll('.contact-card, .contact-method, .social-link');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>

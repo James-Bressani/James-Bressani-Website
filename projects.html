@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | James Bressani</title>
+  <meta name="description" content="Portfolio projects by James Bressani - Data Science, Analytics, and System Administration">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-text">James Bressani</span>
+      </div>
+      
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="hero" style="height: 50vh; min-height: 400px;">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    
+    <div class="container">
+      <div class="hero-content" style="text-align: center; margin: 0 auto;">
+        <h1 class="hero-title">My Projects</h1>
+        <p style="text-align: center; margin-bottom: 2rem;">
+          A collection of my work in data analytics, uncovering insights from data, and software development
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section">
+    <div class="container">
+      <p class="section-subtitle">FEATURED WORK</p>
+      <h2 class="section-title">Recent Projects</h2>
+      
+      <div class="divider"></div>
+      
+      <div class="projects-grid">
+        <!-- Personal Resume Website -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Personal Resume Website</h3>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Developed a <strong>dynamic, animated personal website</strong> to showcase skills, projects, and experience</li>
+                <li>Implemented <strong>responsive design</strong> and <strong>interactive elements</strong> for an engaging user experience</li>
+                <li>Created smooth navigation between different sections of professional information</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/James-Bressani/James-Bressani-Website" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> View Source
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sentiment Analysis of MLK -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Sentiment Analysis of MLK's Speech</h3>
+            <div class="project-tags">
+              <span class="project-tag">R</span>
+              <span class="project-tag">Text Mining</span>
+              <span class="project-tag">XML</span>
+              <span class="project-tag">ggplot2</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Performed <strong>sentiment analysis</strong> on MLK's speech using <strong>text mining techniques in R</strong></li>
+                <li>Extracted text data from HTML sources using <strong>tm and XML packages</strong> for accurate classification</li>
+                <li>Segmented the speech into <strong>quartiles</strong> and analyzed <strong>sentiment progression</strong> over time</li>
+                <li>Created <strong>visualizations</strong> with ggplot2 to present findings effectively</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/James-Bressani/projects/blob/main/MLKspeechsentiment.R" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> View Source
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Homelab Infrastructure -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Homelab Infrastructure</h3>
+            <div class="project-tags">
+              <span class="project-tag">Proxmox</span>
+              <span class="project-tag">Ubuntu Server</span>
+              <span class="project-tag">Docker</span>
+              <span class="project-tag">Jellyfin</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Built and managed a <strong>personal homelab environment</strong> for virtualization and self-hosting</li>
+                <li>Deployed virtual machines and containers using <strong>Proxmox and Docker</strong></li>
+                <li>Hosted services like <strong>Jellyfin, Minecraft servers, and web applications</strong></li>
+                <li>Configured <strong>Ubuntu Server</strong> to manage storage, networking, and system administration tasks</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <span class="project-link" style="cursor: default; opacity: 0.7;">
+                <i class="fas fa-server"></i> Private Project
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- NFL Offensive Yardage Analysis -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">NFL Offensive Yardage Analysis</h3>
+            <div class="project-tags">
+              <span class="project-tag">R</span>
+              <span class="project-tag">Data Visualization</span>
+              <span class="project-tag">Statistical Analysis</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Performed <strong>data cleaning and preprocessing</strong> in R to prepare <strong>NFL game data</strong></li>
+                <li>Created visualizations to identify <strong>correlations between offensive yardage and game outcomes</strong></li>
+                <li>Conducted a <strong>paired t-test</strong> to determine <strong>statistical significance</strong></li>
+                <li>Analyzed differences in offensive yard statistics between winning and losing teams</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://bressanijameslis4273.wordpress.com/2024/12/01/final-project-does-the-winning-team-always-have-more-yards-in-the-nfl-lis4273/" class="project-link" target="_blank">
+                <i class="fas fa-link"></i> View Project
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Country Doctor Office Database -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Country Doctor Office Database</h3>
+            <div class="project-tags">
+              <span class="project-tag">SQL</span>
+              <span class="project-tag">Database Design</span>
+              <span class="project-tag">ERD</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Designed and built a <strong>relational database</strong> for a simulated doctor's office</li>
+                <li>Created an <strong>entity-relationship diagram (ERD)</strong> to visualize database structure</li>
+                <li>Developed <strong>SQL queries</strong> to manage tables for appointments, supplies, patients, and doctors</li>
+                <li>Implemented optimization techniques for efficient data retrieval and storage</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://www.linkedin.com/in/jamesbressani/details/projects/1721784060042/single-media-viewer/?type=DOCUMENT&profileId=ACoAADcJDksBTJRYHo9mnS0NWzGr2H9XdRV3_E8" class="project-link" target="_blank">
+                <i class="fab fa-linkedin"></i> View on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Autonomous Kids' Robot -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 class="project-title">Autonomous Kids' Robot Inspired by Mario Kart</h3>
+            <div class="project-tags">
+              <span class="project-tag">Robotics</span>
+              <span class="project-tag">Embedded Systems</span>
+              <span class="project-tag">Project Management</span>
+            </div>
+            <div class="project-desc">
+              <ul class="project-list">
+                <li>Collaborated in a <strong>team-based engineering project</strong> to design and build a robot</li>
+                <li>Contributed to <strong>planning, design, safety features, and presentations</strong></li>
+                <li>Developed a <strong>robot navigation system</strong> that followed a predefined course</li>
+                <li>Gained experience with real-life robotics applications and engineering principles</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://www.linkedin.com/in/jamesbressani/details/projects/1649263547/multiple-media-viewer/?profileId=ACoAADcJDksBTJRYHo9mnS0NWzGr2H9XdRV3_E8&treasuryMediaId=1721783666438" class="project-link" target="_blank">
+                <i class="fab fa-linkedin"></i> View on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <h3 class="footer-logo">James Bressani</h3>
+        <p class="footer-text">Passionate about turning data into actionable insights</p>
+        
+        <div class="footer-links">
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="projects.html" class="footer-link">Projects</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+        
+        <div class="social-links">
+          <a href="https://github.com/James-Bressani" class="social-link" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jamesbressani/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Animation Script - Data network visualization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Node class for data visualization
+      class Node {
+        constructor() {
+          this.reset();
+        }
+        
+        reset() {
+          // Position
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          
+          // Size
+          this.size = Math.random() * 4 + 1;
+          
+          // Speed
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+          
+          // Color
+          this.color = this.getColor();
+          
+          // Opacity
+          this.alpha = Math.random() * 0.5 + 0.1;
+          
+          // Connection radius
+          this.connectionRadius = 150;
+        }
+        
+        getColor() {
+          // Data-focused colors
+          const colors = [
+            '#002244', // Seahawks Blue
+            '#69BE28', // Action Green
+            '#A5ACAF', // Wolf Grey
+            '#FFFFFF'  // White
+          ];
+          
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.globalAlpha = this.alpha;
+          ctx.fill();
+        }
+        
+        update() {
+          // Movement
+          this.x += this.speedX;
+          this.y += this.speedY;
+          
+          // Boundary check
+          if (this.x < 0 || this.x > canvas.width) {
+            this.speedX = -this.speedX;
+          }
+          
+          if (this.y < 0 || this.y > canvas.height) {
+            this.speedY = -this.speedY;
+          }
+        }
+      }
+      
+      // Create nodes array
+      const nodes = [];
+      const nodeCount = Math.min(100, Math.floor(window.innerWidth / 10));
+      
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push(new Node());
+      }
+      
+      // Draw connections between nodes (data network effect)
+      function drawConnections() {
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < nodes[i].connectionRadius) {
+              ctx.beginPath();
+              ctx.strokeStyle = nodes[i].color;
+              ctx.globalAlpha = 0.05;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+      
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Gradient background with seahawks colors
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.8)'); // Seahawks blue
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.8)');   // Dark background
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw and update nodes
+        drawConnections();
+        
+        nodes.forEach(node => {
+          node.draw();
+          node.update();
+        });
+        
+        // Occasionally add new nodes
+        if (Math.random() < 0.02 && nodes.length < nodeCount + 10) {
+          const node = new Node();
+          nodes.push(node);
+          
+          // Remove a node once we exceed our limit
+          if (nodes.length > nodeCount + 10) {
+            nodes.shift();
+          }
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      
+      mobileMenuBtn.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        this.classList.toggle('active');
+        
+        if (this.classList.contains('active')) {
+          this.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          this.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+      
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Add animation class to elements as they come into view
+      const animateElements = document.querySelectorAll('.project-card, .section-title, .section-subtitle');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>
