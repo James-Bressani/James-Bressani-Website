@@ -6,41 +6,41 @@
   <title>Contact | James Bressani</title>
   <meta name="description" content="Get in touch with James Bressani - Data Analyst and System Administrator">
   
-  <!-- Fonts -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Custom CSS -->
+  
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Favicon -->
+  
   <link rel="icon" type="image/png" href="favicon.png">
   
   <style>
-    /* Improved text contrast in hero section */
+    
     .hero-title {
-      color: #FFFFFF; /* Bright white for main heading */
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Shadow for better legibility */
+      color: #FFFFFF; 
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
       font-weight: 700;
     }
     
     .hero-text {
-      color: #FFFFFF; /* White for hero text */
+      color: #FFFFFF; 
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
       font-size: 1.8rem;
     }
     
-    /* Make strong elements stand out */
+    
     .hero-content strong, .contact-text strong {
-      color: #69BE28; /* Action Green for emphasis */
+      color: #69BE28; 
       font-weight: 700;
     }
     
-    /* Additional styles for this page */
+    
     .contact-methods {
       display: flex;
       justify-content: space-around;
@@ -153,7 +153,7 @@
       max-width: 70rem;
     }
     
-    /* Footer social links - white color */
+    
     .footer .social-link {
       background: rgba(255, 255, 255, 0.1);
       color: var(--color-white);
@@ -177,7 +177,7 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
+  
   <header class="header">
     <div class="container header-container">
       <div class="logo">
@@ -197,7 +197,7 @@
     </div>
   </header>
 
-  <!-- Page Hero -->
+  
   <section class="hero" style="height: 40vh; min-height: 300px;">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
     
@@ -211,7 +211,7 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  
   <section class="contact-section">
     <div class="container">
       <div class="contact-card">
@@ -253,7 +253,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -279,13 +279,13 @@
     </div>
   </footer>
 
-  <!-- Animation Script - Static Colors with Constant Motion -->
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Email protection
+      
       const emailDisplay = document.getElementById('email-display');
       if (emailDisplay) {
-        // Split the email components to avoid crawlers
+        
         const emailName = 'bressanijames';
         const emailDomain = 'gmail.com';
         
@@ -298,89 +298,89 @@
       const canvas = document.getElementById('hero-canvas');
       const ctx = canvas.getContext('2d');
       
-      // Set canvas size
+      
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = canvas.parentElement.offsetHeight;
         
-        // Redraw background on resize
+        
         drawBackground();
       }
       
-      // Draw static background once
+      
       function drawBackground() {
-        // Gradient background
+        
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.9)'); // Darker Seahawks blue
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');   // Darker background for better text contrast
+        gradient.addColorStop(0, 'rgba(0, 34, 68, 0.9)'); 
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');   
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
       
-      // Mouse interaction
+      
       let mouse = {
         x: undefined,
         y: undefined,
-        radius: 100  // Interaction radius
+        radius: 100  
       };
       
-      // Track mouse position
+      
       window.addEventListener('mousemove', function(event) {
         mouse.x = event.x;
         mouse.y = event.y;
       });
       
-      // Remove mouse position when inactive
+      
       window.addEventListener('mouseout', function() {
         mouse.x = undefined;
         mouse.y = undefined;
       });
       
-      // Fixed Seahawks colors array
+      
       const colors = [
-        '#002244', // Seahawks Blue
-        '#69BE28', // Action Green
-        '#A5ACAF', // Wolf Grey
-        '#FFFFFF'  // White
+        '#002244', 
+        '#69BE28', 
+        '#A5ACAF', 
+        '#FFFFFF'  
       ];
       
-      // Particles array
+      
       let particles = [];
       
-      // Particle class with fixed color
+      
       class Particle {
         constructor() {
-          // Position
+          
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height;
           
-          // Size - same range as original
+          
           this.size = Math.random() * 4 + 1;
           
-          // Speed for constant motion
+          
           this.speedX = (Math.random() * 0.8 - 0.4);
-          // Ensure minimum speed
+          
           if (Math.abs(this.speedX) < 0.2) {
             this.speedX = 0.2 * (Math.random() > 0.5 ? 1 : -1);
           }
           
           this.speedY = (Math.random() * 0.8 - 0.4);
-          // Ensure minimum speed
+          
           if (Math.abs(this.speedY) < 0.2) {
             this.speedY = 0.2 * (Math.random() > 0.5 ? 1 : -1);
           }
           
-          // IMPORTANT: Fixed color index that never changes
+          
           this.colorIndex = Math.floor(Math.random() * colors.length);
           
-          // IMPORTANT: Fixed opacity that never changes
+          
           this.alpha = Math.random() * 0.3 + 0.2;
           
-          // Connection radius
+          
           this.connectionRadius = 150;
         }
         
-        // Get color from fixed index
+        
         getColor() {
           return colors[this.colorIndex];
         }
@@ -391,18 +391,18 @@
           ctx.fillStyle = this.getColor();
           ctx.globalAlpha = this.alpha;
           ctx.fill();
-          ctx.globalAlpha = 1; // Reset global alpha
+          ctx.globalAlpha = 1; 
         }
         
         update() {
-          // Mouse interaction
+          
           if (mouse.x !== undefined && mouse.y !== undefined) {
             const dx = mouse.x - this.x;
             const dy = mouse.y - this.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
             
             if (distance < mouse.radius) {
-              // Move away from mouse
+              
               const force = (mouse.radius - distance) / mouse.radius;
               const directionX = dx / distance || 0;
               const directionY = dy / distance || 0;
@@ -412,11 +412,11 @@
             }
           }
           
-          // Regular movement
+          
           this.x += this.speedX;
           this.y += this.speedY;
           
-          // Boundary check with bounce
+          
           if (this.x < 0 || this.x > canvas.width) {
             this.speedX = -this.speedX;
           }
@@ -427,7 +427,7 @@
         }
       }
       
-      // Initialize particles
+      
       function initializeParticles() {
         particles = [];
         const particlesCount = Math.min(80, Math.floor(window.innerWidth / 10));
@@ -437,7 +437,7 @@
         }
       }
       
-      // Connect particles with lines
+      
       function connectParticles() {
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
@@ -446,7 +446,7 @@
             const distance = Math.sqrt(dx * dx + dy * dy);
             
             if (distance < particles[i].connectionRadius) {
-              // Use fixed color for connections
+              
               ctx.strokeStyle = particles[i].getColor();
               ctx.globalAlpha = 0.05;
               ctx.lineWidth = 0.5;
@@ -455,54 +455,54 @@
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
               ctx.stroke();
-              ctx.globalAlpha = 1; // Reset global alpha
+              ctx.globalAlpha = 1; 
             }
           }
         }
       }
       
-      // Animation loop
+      
       function animate() {
-        // Clear canvas
+        
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Redraw background
+        
         drawBackground();
         
-        // Update and draw particles
+        
         particles.forEach(particle => {
           particle.update();
         });
         
-        // Draw connections
+        
         connectParticles();
         
-        // Draw particles
+        
         particles.forEach(particle => {
           particle.draw();
         });
         
-        // Occasionally add new particles with fixed properties
+        
         if (Math.random() < 0.005 && particles.length < 100) {
           particles.push(new Particle());
           
-          // Remove oldest particle if exceeding limit
+          
           if (particles.length > 100) {
             particles.shift();
           }
         }
         
-        // Continue animation
+        
         requestAnimationFrame(animate);
       }
       
-      // Initialize canvas and start animation
+      
       resizeCanvas();
       window.addEventListener('resize', resizeCanvas);
       initializeParticles();
       animate();
       
-      // Mobile menu toggle
+      
       const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
       const nav = document.querySelector('.nav');
       
@@ -517,7 +517,7 @@
         }
       });
       
-      // Header scroll effect
+      
       window.addEventListener('scroll', function() {
         const header = document.querySelector('.header');
         if (window.scrollY > 50) {
@@ -527,7 +527,7 @@
         }
       });
       
-      // Add animation class to elements as they come into view
+      
       const animateElements = document.querySelectorAll('.contact-card, .contact-method, .social-link');
       
       const observerOptions = {
