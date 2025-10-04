@@ -76,27 +76,32 @@
 <body>
   
   <header class="header">
-  <div class="container header-container">
-    <div class="logo">
-      <span class="logo-text">James Bressani</span>
-    </div>
-    
-    <nav class="nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="projects.html" class="nav-link">Projects</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <!-- ADD THIS DARK MODE TOGGLE -->
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-text">James Bressani</span>
+      </div>
+      
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </nav>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
       </button>
-    </nav>
-    
-    <button class="mobile-menu-btn" aria-label="Toggle Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</header>
+    </div>
+  </header>
+
+  
+  <button class="theme-toggle theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon" id="theme-icon-mobile"></i>
+  </button>
 
   
   <section class="hero">
@@ -298,37 +303,61 @@
   </footer>
 
   <script>
+
     (function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
-    
-    // Check for saved theme preference or default to 'light'
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
-    
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', function() {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      const themeIcon = document.getElementById('theme-icon');
+      const themeIconMobile = document.getElementById('theme-icon-mobile');
+      const html = document.documentElement;
       
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-    });
-    
-    // Update icon based on theme
-    function updateThemeIcon(theme) {
-      if (theme === 'dark') {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
+      
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      html.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+      
+      
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+          toggleTheme();
+        });
       }
-    }
-  })();
+      
+      
+      if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', function() {
+          toggleTheme();
+        });
+      }
+      
+      
+      function toggleTheme() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      }
+      
+      
+      function updateThemeIcon(theme) {
+        const icons = [themeIcon, themeIconMobile];
+        icons.forEach(icon => {
+          if (icon) {
+            if (theme === 'dark') {
+              icon.classList.remove('fa-moon');
+              icon.classList.add('fa-sun');
+            } else {
+              icon.classList.remove('fa-sun');
+              icon.classList.add('fa-moon');
+            }
+          }
+        });
+      }
+    })();
+    
+    
     document.addEventListener('DOMContentLoaded', function() {
       const canvas = document.getElementById('hero-canvas');
       const ctx = canvas.getContext('2d');
