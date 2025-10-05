@@ -570,17 +570,8 @@
       animateElements.forEach(element => {
         observer.observe(element);
       });
-
-      const emailDisplay = document.getElementById('email-display');
-      if (emailDisplay) {
-        emailDisplay.addEventListener('click', function() {
-          const encodedEmail = 'amFtZXNicuZXNzYW5pQGdtYWlsLmNvbQ==';
-          const decodedEmail = atob(encodedEmail);
-          this.innerHTML = `<a href="mailto:${decodedEmail}">${decodedEmail}</a>`;
-          this.style.cursor = 'default';
-        }, { once: true });
-      }
     });
   </script>
+  <script src="contact.js"></script>
 </body>
 </html>
